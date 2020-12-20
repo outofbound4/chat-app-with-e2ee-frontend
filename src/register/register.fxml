@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1">
-    <stylesheets>
-        <URL value="@register.css"/>
-    </stylesheets>
-</AnchorPane>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.RegisterController">
+   <children>
+      <VBox prefHeight="516.0" prefWidth="450.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="450.0">
+               <children>
+                  <Text fill="#6007e4" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTER" textAlignment="CENTER" wrappingWidth="158.7294921875">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="450.0">
+               <children>
+                  <Text fill="#6007e4" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your account. It takes only few moment" textAlignment="CENTER" wrappingWidth="316.7294921875" />
+               </children>
+            </HBox>
+            <VBox prefHeight="318.0" prefWidth="450.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="450.0" spacing="30.0">
+                     <children>
+                        <JFXTextField fx:id="firstName" alignment="CENTER" focusColor="#1b4ad7" labelFloat="true" prefHeight="26.0" prefWidth="201.0" promptText="FIRST NAME" unFocusColor="#e43838">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="lastName" alignment="CENTER" focusColor="#1b4ad7" labelFloat="true" prefHeight="26.0" prefWidth="198.0" promptText="LAST NAME" unFocusColor="#e43838">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
+                     <children>
+                        <JFXTextField fx:id="email" alignment="CENTER" focusColor="#1b4ad7" labelFloat="true" prefHeight="37.0" prefWidth="387.0" promptText="EMAIL" unFocusColor="#e43838">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
+                     <children>
+                        <JFXTextField fx:id="password" alignment="CENTER" focusColor="#1b4ad7" labelFloat="true" prefHeight="37.0" prefWidth="387.0" promptText="PASSWORD" unFocusColor="#e43838">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
+                     <children>
+                        <JFXTextField fx:id="confirmPassword" alignment="CENTER" focusColor="#1b4ad7" labelFloat="true" prefHeight="37.0" prefWidth="387.0" promptText="CONFIRM PASSWORD" unFocusColor="#e43838">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="450.0" spacing="30.0">
+                     <children>
+                        <JFXCheckBox onAction="#onTermsAndConditionClck" text="I accept the Terms of Use and Privacy Policy." textAlignment="CENTER" textFill="#9e1f1f" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="450.0">
+               <children>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onRegisterButtonClick" prefHeight="46.0" prefWidth="408.0" text="REGISTER" textAlignment="CENTER" textFill="#b92020">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>
