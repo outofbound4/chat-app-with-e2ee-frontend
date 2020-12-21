@@ -58,7 +58,7 @@ public class RegisterController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
             Stage stage = new Stage();
-            stage.setTitle("Register");
+            stage.setTitle("Login");
             stage.setScene(new Scene(root));
             stage.show();
             //it Hides the current window
