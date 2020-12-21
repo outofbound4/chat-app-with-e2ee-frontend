@@ -63,6 +63,17 @@ public class LoginController implements Initializable {
 
     @FXML
     private void onForgotPasswordClick(ActionEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../forgotpassword/forgotpassword.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Forgot Password");
+            stage.setScene(new Scene(root));
+            stage.show();
+            //it Hides the current window
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
     }
 
 }
