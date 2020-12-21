@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,7 +39,15 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void onSignUpLevelClicked(javafx.event.ActionEvent event) {
+    private void onKeepMeSignedClick(javafx.event.ActionEvent event) {
+    }
+
+    @FXML
+    private void onLoginButtonClick(javafx.event.ActionEvent event) {
+    }
+
+    @FXML
+    private void onDontHaveAccountClick(ActionEvent event) {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("../register/register.fxml"));
@@ -46,18 +55,14 @@ public class LoginController implements Initializable {
             stage.setTitle("Register");
             stage.setScene(new Scene(root));
             stage.show();
-            // Hide this current window (if this is what you want)
+            //it Hides the current window
             ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
         }
     }
 
     @FXML
-    private void onKeepMeSignedClick(javafx.event.ActionEvent event) {
-    }
-
-    @FXML
-    private void onLoginButtonClick(javafx.event.ActionEvent event) {
+    private void onForgotPasswordClick(ActionEvent event) {
     }
 
 }
