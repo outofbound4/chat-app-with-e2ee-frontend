@@ -33,7 +33,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="400.0">
                      <children>
-                        <JFXTextField fx:id="userid" blendMode="GREEN" labelFloat="true" prefHeight="35.0" prefWidth="348.0" promptText="USER ID" unFocusColor="#054add">
+                        <JFXTextField fx:id="userid" labelFloat="true" prefHeight="35.0" prefWidth="348.0" promptText="USER ID" unFocusColor="#054add">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -45,7 +45,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="400.0">
                      <children>
-                        <JFXTextField fx:id="password" blendMode="GREEN" labelFloat="true" prefHeight="34.0" prefWidth="349.0" promptText="PASSWORD" unFocusColor="#054add">
+                        <JFXTextField fx:id="password" labelFloat="true" prefHeight="34.0" prefWidth="349.0" promptText="PASSWORD" unFocusColor="#054add">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
@@ -68,7 +68,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="66.0" prefWidth="600.0">
                <children>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onLoginButtonClick" prefHeight="31.0" prefWidth="401.0" text="Login" textAlignment="CENTER" textFill="#970d0d">
+                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onLoginButtonClick" prefHeight="31.0" prefWidth="401.0" text="Login" textAlignment="CENTER" textFill="#0909a1">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
