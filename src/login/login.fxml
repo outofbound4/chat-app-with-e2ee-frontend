@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
@@ -45,11 +46,11 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="400.0">
                      <children>
-                        <JFXTextField fx:id="password" labelFloat="true" prefHeight="34.0" prefWidth="349.0" promptText="PASSWORD" unFocusColor="#054add">
-                           <HBox.margin>
+                        <JFXPasswordField labelFloat="true" prefHeight="37.0" prefWidth="380.0" promptText="PASSWORD" unFocusColor="#2208b2">
+                           <padding>
                               <Insets left="30.0" />
-                           </HBox.margin>
-                        </JFXTextField>
+                           </padding>
+                        </JFXPasswordField>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="400.0">

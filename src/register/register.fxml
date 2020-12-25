@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
@@ -55,20 +56,20 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
                      <children>
-                        <JFXTextField fx:id="password" alignment="CENTER" focusColor="#09329a" labelFloat="true" prefHeight="37.0" prefWidth="387.0" promptText="PASSWORD" unFocusColor="#110aeb">
+                        <JFXPasswordField alignment="CENTER" labelFloat="true" prefHeight="38.0" prefWidth="394.0" promptText="PASSWORD" unFocusColor="#170aa8">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </JFXTextField>
+                        </JFXPasswordField>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
                      <children>
-                        <JFXTextField fx:id="confirmPassword" alignment="CENTER" focusColor="#09329a" labelFloat="true" prefHeight="37.0" prefWidth="387.0" promptText="CONFIRM PASSWORD" unFocusColor="#110aeb">
+                        <JFXPasswordField alignment="CENTER" labelFloat="true" prefHeight="32.0" prefWidth="400.0" promptText="CONFIRM PASSWORD" unFocusColor="#260ab2">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </JFXTextField>
+                        </JFXPasswordField>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="35.0" prefWidth="450.0" spacing="30.0">
