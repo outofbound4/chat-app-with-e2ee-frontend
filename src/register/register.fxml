@@ -31,14 +31,38 @@
             </HBox>
             <VBox prefHeight="382.0" prefWidth="450.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="101.0" prefWidth="450.0" spacing="30.0">
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
                      <children>
-                        <JFXTextField fx:id="firstName" alignment="CENTER" focusColor="#09329a" labelFloat="true" prefHeight="26.0" prefWidth="201.0" promptText="FIRST NAME" unFocusColor="#110aeb">
+                        <JFXTextField fx:id="firstName" focusColor="#09329a" labelFloat="true" prefHeight="26.0" prefWidth="201.0" promptText="FIRST NAME" unFocusColor="#110aeb">
                            <font>
                               <Font size="15.0" />
                            </font>
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
                         </JFXTextField>
-                        <JFXTextField fx:id="lastName" alignment="CENTER" focusColor="#09329a" labelFloat="true" prefHeight="26.0" prefWidth="198.0" promptText="LAST NAME" unFocusColor="#110aeb">
+                        <JFXTextField fx:id="lastName" focusColor="#09329a" labelFloat="true" prefHeight="26.0" prefWidth="198.0" promptText="LAST NAME" unFocusColor="#110aeb">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
+                     <children>
+                        <JFXTextField fx:id="email" focusColor="#09329a" labelFloat="true" prefHeight="7.0" prefWidth="398.0" promptText="EMAIL" unFocusColor="#110aeb">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -47,16 +71,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
                      <children>
-                        <JFXTextField fx:id="email" alignment="CENTER" focusColor="#09329a" labelFloat="true" prefHeight="37.0" prefWidth="387.0" promptText="EMAIL" unFocusColor="#110aeb">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </JFXTextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
-                     <children>
-                        <JFXPasswordField alignment="CENTER" labelFloat="true" prefHeight="38.0" prefWidth="394.0" promptText="PASSWORD" unFocusColor="#170aa8">
+                        <JFXPasswordField fx:id="password" labelFloat="true" prefHeight="26.0" prefWidth="401.0" promptText="PASSWORD" unFocusColor="#170aa8">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -65,20 +80,34 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="450.0" spacing="30.0">
                      <children>
-                        <JFXPasswordField alignment="CENTER" labelFloat="true" prefHeight="32.0" prefWidth="400.0" promptText="CONFIRM PASSWORD" unFocusColor="#260ab2">
+                        <JFXPasswordField fx:id="confirmPassword" labelFloat="true" prefHeight="15.0" prefWidth="400.0" promptText="CONFIRM PASSWORD" unFocusColor="#260ab2">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </JFXPasswordField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="450.0" spacing="30.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="450.0">
                      <children>
-                        <JFXCheckBox onAction="#onTermsAndConditionClck" text="I accept the Terms of Use and Privacy Policy." textAlignment="CENTER" textFill="#0d4ae4" />
+                        <JFXCheckBox onAction="#onTermsAndConditionClck" text="I accept the Terms of Use and Privacy Policy." textAlignment="CENTER" textFill="#0d4ae4">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin></JFXCheckBox>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="450.0">
+               <children>
+                  <Text fx:id="error" fill="#e30b0b" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="407.98583984375" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="450.0">
                <children>
                   <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onRegisterButtonClick" prefHeight="46.0" prefWidth="408.0" text="REGISTER" textAlignment="CENTER" textFill="#2804e0">

@@ -20,7 +20,7 @@
                   <Insets left="50.0" right="50.0" />
                </padding>
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets top="40.0" />
                </VBox.margin>
                <children>
                   <Text fill="#cd2727" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="144.29931640625">
@@ -30,7 +30,7 @@
                   </Text>
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="210.0" prefWidth="400.0">
+            <VBox alignment="CENTER" prefHeight="249.0" prefWidth="400.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="400.0">
                      <children>
@@ -39,19 +39,18 @@
                               <Font size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets left="30.0" top="30.0" />
                            </HBox.margin>
                         </JFXTextField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="400.0">
+                  <HBox fx:id="password" alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="400.0">
                      <children>
-                        <JFXPasswordField labelFloat="true" prefHeight="37.0" prefWidth="380.0" promptText="PASSWORD" unFocusColor="#2208b2">
-                           <padding>
-                              <Insets left="30.0" />
-                           </padding>
-                        </JFXPasswordField>
+                        <JFXPasswordField fx:id="password" labelFloat="true" prefHeight="35.0" prefWidth="349.0" promptText="PASSWORD" unFocusColor="#3013d0" />
                      </children>
+                     <VBox.margin>
+                        <Insets left="30.0" top="30.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="400.0">
                      <children>
@@ -62,11 +61,16 @@
                         </JFXCheckBox>
                      </children>
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="30.0" />
                      </VBox.margin>
                   </HBox>
                </children>
             </VBox>
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="400.0">
+               <children>
+                  <Text fx:id="error" fill="#f20303" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="364.7294921875" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="66.0" prefWidth="600.0">
                <children>
                   <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onLoginButtonClick" prefHeight="31.0" prefWidth="401.0" text="Login" textAlignment="CENTER" textFill="#0909a1">
