@@ -5,6 +5,7 @@
  */
 package register;
 
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -32,9 +34,11 @@ public class RegisterController implements Initializable {
     @FXML
     private JFXTextField email;
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField password;
     @FXML
-    private JFXTextField confirmPassword;
+    private JFXPasswordField confirmPassword;
+    @FXML
+    private Text error;
 
     /**
      * Initializes the controller class.
