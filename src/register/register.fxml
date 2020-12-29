@@ -89,7 +89,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="450.0">
                      <children>
-                        <JFXCheckBox onAction="#onTermsAndConditionClck" text="I accept the Terms of Use and Privacy Policy." textAlignment="CENTER" textFill="#0d4ae4">
+                        <JFXCheckBox fx:id="termCondition" text="I accept the Terms of Use and Privacy Policy." textAlignment="CENTER" textFill="#0d4ae4">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin></JFXCheckBox>
