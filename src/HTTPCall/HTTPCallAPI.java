@@ -7,10 +7,7 @@ package HTTPCall;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 /**
  *
@@ -21,13 +18,8 @@ public interface HTTPCallAPI {
     /**
      *
      * @param user
-     * @param userid
-     * @param password
      * @return
      */
-//    @POST("/login")
-//    Call<String> login(@Query("userid") String userid,
-//            @Query("password") String password);
     @POST("login")
     public Call<User> login(@Body User user);
 
