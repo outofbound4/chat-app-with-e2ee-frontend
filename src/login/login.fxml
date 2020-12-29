@@ -34,7 +34,7 @@
                     <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="400.0">
                             <children>
-                                <JFXTextField fx:id="userid" labelFloat="true" prefHeight="35.0" prefWidth="348.0" promptText="USER ID" unFocusColor="#054add">
+                                <JFXTextField fx:id="userid" labelFloat="true" onAction="#clearError" onMouseClicked="#clearError" prefHeight="35.0" prefWidth="348.0" promptText="USER ID" unFocusColor="#054add">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
@@ -46,7 +46,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="400.0">
                             <children>
-                                <JFXPasswordField fx:id="password" labelFloat="true" prefHeight="26.0" prefWidth="401.0" promptText="PASSWORD" unFocusColor="#170aa8">
+                                <JFXPasswordField fx:id="password" labelFloat="true" onAction="#clearError" onMouseClicked="#clearError" prefHeight="26.0" prefWidth="401.0" promptText="PASSWORD" unFocusColor="#170aa8">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
