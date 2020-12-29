@@ -20,7 +20,10 @@ public interface HTTPCallAPI {
      * @param user
      * @return
      */
-    @POST("login")
-    public Call<User> login(@Body User user);
+    @POST("/login")
+    public Call<Login> login(@Body Login login);
+    
+    @POST("/register")
+    public Call<Register> register(@Body Register register);
 
 }
