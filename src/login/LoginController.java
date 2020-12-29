@@ -20,7 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import retrofit2.Call;
@@ -55,28 +55,37 @@ public class LoginController implements Initializable {
 
     @FXML
     private void onLoginButtonClick(javafx.event.ActionEvent event) throws IOException {
+//        input values
+        String userId = this.userid.getText();
+        String password = this.password.getText();
         // getting retrofit service object
         RetrofitService retrofit = new RetrofitService();
         HTTPCallAPI service = retrofit.getService();
         // sending URL to server
-        User user = new User("gaurav", "gaurav");
+        User user = new User(userId, password);
         final Call<User> call = service.login(user);
-        // getting Asynchronous call 
+        // making Asynchronous call 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User apiResponse = response.body();
                     //API response
-                    System.out.println(apiResponse.message);
+                    if (apiResponse.response.equals("Error")) {
+                        error.setText(apiResponse.message);
+                    } else {
+//                        here we will do some specific work.
+
+                    }
                 } else {
-                    System.out.println("Request Error :: " + response.errorBody());
+                    error.setText("Request Error :: " + response.errorBody());
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                System.out.println("Network Error :: " + t.getLocalizedMessage());
+                error.setText("Network Error :: " + t.getLocalizedMessage());
+//                System.out.println("Network Error :: " + t.getLocalizedMessage());
             }
         });
         // getting Synchronous response
@@ -112,6 +121,11 @@ public class LoginController implements Initializable {
             ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
         }
+    }
+
+    @FXML
+    private void clearError(MouseEvent event) {
+        error.setText("");
     }
 
 }
