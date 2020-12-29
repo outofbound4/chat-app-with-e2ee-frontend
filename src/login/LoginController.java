@@ -6,13 +6,14 @@
 package login;
 
 import HTTPCall.HTTPCallAPI;
+import HTTPCall.Login;
 import HTTPCall.RetrofitService;
-import HTTPCall.User;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,12 +35,13 @@ import retrofit2.Response;
  */
 public class LoginController implements Initializable {
 
-    @FXML
     private JFXTextField userid;
     @FXML
     private JFXPasswordField password;
     @FXML
     private Text error;
+    @FXML
+    private JFXTextField email;
 
     /**
      * Initializes the controller class.
@@ -54,43 +56,81 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void onLoginButtonClick(javafx.event.ActionEvent event) throws IOException {
+    private void onLoginButtonClick(javafx.event.ActionEvent event) throws IOException, Exception {
 //        input values
-        String userId = this.userid.getText();
+        String email = this.email.getText();
         String password = this.password.getText();
-        // getting retrofit service object
-        RetrofitService retrofit = new RetrofitService();
-        HTTPCallAPI service = retrofit.getService();
-        // sending URL to server
-        User user = new User(userId, password);
-        final Call<User> call = service.login(user);
-        // making Asynchronous call 
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-                    User apiResponse = response.body();
-                    //API response
-                    if (apiResponse.response.equals("Error")) {
-                        error.setText(apiResponse.message);
-                    } else {
+
+//        empty field checking
+        final String validationError = validate(email, password);
+        if (isValidEmail(email)) {
+            if (validationError.equals("validated")) {
+                // getting retrofit service object
+                RetrofitService retrofit = new RetrofitService();
+                HTTPCallAPI service = retrofit.getService();
+                // sending URL to server
+                Login log = new Login(email, password);
+                final Call<Login> call = service.login(log);
+                // making Asynchronous call 
+                call.enqueue(new Callback<Login>() {
+                    @Override
+                    public void onResponse(Call<Login> call, Response<Login> response) {
+                        if (response.isSuccessful()) {
+                            Login apiResponse = response.body();
+                            //API response
+                            if (apiResponse.response.equals("Error")) {
+                                error.setText(apiResponse.message);
+                            } else {
 //                        here we will do some specific work.
 
+                            }
+                        } else {
+                            error.setText("Request Error :: " + response.errorBody());
+                        }
                     }
-                } else {
-                    error.setText("Request Error :: " + response.errorBody());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                error.setText("Network Error :: " + t.getLocalizedMessage());
+                    @Override
+                    public void onFailure(Call<Login> call, Throwable t) {
+                        error.setText("Network Error :: " + t.getLocalizedMessage());
 //                System.out.println("Network Error :: " + t.getLocalizedMessage());
+                    }
+                });
+                // getting Synchronous response
+                // final Response<User> response = call.execute();
+                // System.out.println(response.code());
+            } else {
+                error.setText(validationError);
             }
-        });
-        // getting Synchronous response
-        // final Response<User> response = call.execute();
-        // System.out.println(response.code());
+        } else {
+            error.setText("Invalid Email.");
+        }
+
+    }
+
+    private String validate(String email, String password) throws Exception {
+
+        if (email == null || email.isEmpty()) {
+            return "Email missing.";
+        }
+        if (password == null || password.isEmpty()) {
+            return "Password field empty.";
+        }
+
+        return "validated";
+    }
+
+//    method for email validation
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."
+                + "[a-zA-Z0-9_+&*-]+)*@"
+                + "(?:[a-zA-Z0-9-]+\\.)+[a-z"
+                + "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        return pat.matcher(email).matches();
     }
 
     @FXML
