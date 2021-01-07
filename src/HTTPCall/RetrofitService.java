@@ -5,6 +5,7 @@
  */
 package HTTPCall;
 
+import config.Config;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -12,14 +13,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *
  * @author gaurav
  */
-public class RetrofitService {
+public class RetrofitService implements Config{
 
     private final Retrofit retrofit;
     private final HTTPCallAPI service;
 
     public RetrofitService() {
         this.retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         this.service = this.retrofit.create(HTTPCallAPI.class);
