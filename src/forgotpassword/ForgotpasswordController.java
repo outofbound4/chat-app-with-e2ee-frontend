@@ -5,6 +5,7 @@
  */
 package forgotpassword;
 
+import JavaMail.JavaMail;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +39,8 @@ public class ForgotpasswordController implements Initializable {
 
     @FXML
     private void onGetNewPasswordClick(ActionEvent event) {
+        JavaMail mail = new JavaMail();
+        System.out.println(mail.sendMail("gaurav.kr109@gmail.com", "testing", "testing"));
     }
 
     @FXML
