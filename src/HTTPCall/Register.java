@@ -13,12 +13,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Register {
 
-    @SerializedName("firstName")
-    public String firstName;
-    @SerializedName("lastName")
-    public String lastName;
-    @SerializedName("email")
-    public String email;
+    @SerializedName("firstname")
+    public String firstname;
+    @SerializedName("lastname")
+    public String lastname;
+    @SerializedName("username")
+    public String username;
     @SerializedName("password")
     public String password;
     @SerializedName("response")
@@ -27,9 +27,9 @@ public class Register {
     public String message;
 
     public Register(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.username = email;
         this.password = password;
     }
 }
