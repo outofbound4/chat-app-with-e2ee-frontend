@@ -17,13 +17,14 @@ public interface HTTPCallAPI {
 
     /**
      *
-     * @param user
+     * @param login
      * @return
      */
     @POST("/login")
     public Call<Login> login(@Body Login login);
-    
     @POST("/register")
     public Call<Register> register(@Body Register register);
+    @POST("/forgotPassword")
+    public Call<ForgotPassword> forgotPassword(@Body ForgotPassword forgotPass);
 
 }
