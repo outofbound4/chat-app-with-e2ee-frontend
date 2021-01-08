@@ -30,35 +30,37 @@ public class JavaMail implements Config {
      * @return
      */
     public String sendMail(String to, String subject, String body) {
-        // Get system properties
-        Properties properties = System.getProperties();
-        // Setup mail server
-        properties.setProperty("mail.smtp.host", HOST);
-        // Get the default Session object.
-        Session session;
-        session = Session.getDefaultInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(FROM, EMAIL_PASSWORD);
-            }
-        });
-        
+        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+        // Get a Properties object
+        Properties props = System.getProperties();
+        props.setProperty("mail.smtp.host", "smtp.gmail.com");//
+        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);//
+        props.setProperty("mail.smtp.port", "465"); //
+        props.setProperty("mail.smtp.socketFactory.port", "465");//
+        props.put("mail.smtp.auth", "true");//
+
         try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(FROM));
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            // Set Subject: header field
-            message.setSubject(subject);
-            // Now set the actual message
-            message.setText(body);
-            // Send message
-            Transport.send(message);
-            return "successful";
-        } catch (MessagingException mex) {
-            return mex.toString();
+            Session session = Session.getDefaultInstance(props,
+                    new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(FROM, EMAIL_PASSWORD);
+                }
+            });
+
+            // -- Create a new message --
+            Message msg = new MimeMessage(session);
+
+            // -- Set the FROM and TO fields --
+            msg.setFrom(new InternetAddress(FROM));
+            msg.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(to, false));
+            msg.setSubject(subject);
+            msg.setText(body);
+            Transport.send(msg);
+            return "Successful";
+        } catch (MessagingException e) {
+            return e.toString();
         }
     }
 }
