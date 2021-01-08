@@ -13,8 +13,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Login {
 
-    @SerializedName("email")
-    public String email;
+    @SerializedName("username")
+    public String username;
     @SerializedName("password")
     public String password;
     @SerializedName("response")
@@ -23,11 +23,11 @@ public class Login {
     public String message;
 
     public Login(String email, String Password) {
-        this.email = email;
+        this.username = email;
         this.password = Password;
     }
 
     public String getEmail() {
-        return email;
+        return username;
     }
 }
