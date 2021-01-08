@@ -13,14 +13,14 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ForgotPassword {
 
-    @SerializedName("email")
-    public String email;
+    @SerializedName("username")
+    public String username;
     @SerializedName("response")
     public String response;
     @SerializedName("message")
     public String message;
 
     public ForgotPassword(String email) {
-        this.email = email;
+        this.username = email;
     }
 }
