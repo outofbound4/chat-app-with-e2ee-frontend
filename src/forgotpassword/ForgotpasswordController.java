@@ -5,12 +5,17 @@
  */
 package forgotpassword;
 
+import HTTPCall.ForgotPassword;
+import HTTPCall.HTTPCallAPI;
+import HTTPCall.RetrofitService;
 import JavaMail.JavaMail;
 import com.jfoenix.controls.JFXTextField;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +26,9 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * FXML Controller class
@@ -47,22 +55,50 @@ public class ForgotpasswordController implements Initializable {
         JavaMail mail = new JavaMail();
         String resetEmail = email.getText();
         if (isValidEmail(resetEmail)) {
-            String status = mail.sendMail(resetEmail, "testing", "testing");
-            if (status.equals("Successful")) {
-                error.setText("Email sent successfully..!!");
-            } else {
-                error.setText(status);
-            }
+            // getting retrofit service object
+            RetrofitService retrofit = new RetrofitService();
+            // getting retrofit service object RetrofitService retrofit = new RetrofitService();
+            HTTPCallAPI service = retrofit.getService();
+            // sending URL to server
+            ForgotPassword forgotPass = new ForgotPassword(resetEmail);
+            final Call<ForgotPassword> call = service.forgotPassword(forgotPass);
+            // making Asynchronous call
+            call.enqueue(new Callback<ForgotPassword>() {
+                @Override
+                public void onResponse(Call<ForgotPassword> call, Response<ForgotPassword> response) {
+                    if (response.isSuccessful()) {
+                        ForgotPassword apiResponse = response.body();
+                        //API response
+                        if (apiResponse.response.equals("Error")) {
+                            error.setText(apiResponse.message);
+                        } else {
+                            // here we will do some specific work.
+                            String status = mail.sendMail(resetEmail, "Talkpad reset password",
+                                    "Please click this link : " + apiResponse.token);
+                            if (status.equals("Successful")) {
+                                error.setText("Email sent successfully..!!");
+                            } else {
+                                error.setText(status);
+                            }
+                        }
+                    } else {
+                        error.setText("Request Error :: " + response.errorBody());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ForgotPassword> call, Throwable t) {
+                    error.setText("Network Error :: " + t.getLocalizedMessage());
+//                System.out.println("Network Error :: " + t.getLocalizedMessage());
+                }
+            });
+
         } else {
             error.setText("Invalid Email.");
         }
     }
 
-    /**
-     *
-     * @param email
-     * @return
-     */
+
     //    method for email validation
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."
