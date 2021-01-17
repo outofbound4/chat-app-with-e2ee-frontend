@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="public/Bootstrap/bootstrapfx-core-0.4.0.jar"/>
+	<classpathentry kind="lib" path="public/Fontawesome/fontawesomefx-8.1.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/JAF/activation.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/lib/imap.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="public/JavaMail/mail.jar"/>
+	<classpathentry kind="lib" path="public/jfoenix/jfoenix-9.0.10.jar"/>
+	<classpathentry kind="lib" path="public/retrofit/converter-gson-2.9.0.jar"/>
+	<classpathentry kind="lib" path="public/retrofit/converter-scalars-2.9.0.jar"/>
+	<classpathentry kind="lib" path="public/retrofit/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="public/retrofit/okhttp-3.14.9.jar"/>
+	<classpathentry kind="lib" path="public/retrofit/okio-1.17.2.jar"/>
+	<classpathentry kind="lib" path="public/retrofit/retrofit-2.9.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JAVAFX"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

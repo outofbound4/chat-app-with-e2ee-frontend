@@ -82,9 +82,25 @@ public class LoginController implements Initializable {
                                 error.setText(apiResponse.message);
                             } else {
 //                        here we will do some specific work.
-
+                            	 error.setText("Login Successful");
+                            	 //Parent root1;
+                                 try {
+                                     Parent root; 
+                                     FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../Front_end/resources/Front_end.fxml"));
+                                     root=(Parent)fxmlLoader.load();
+                                     Stage stage = new Stage();
+                                     stage.setTitle("User Dashboard");
+                                     stage.setScene(new Scene(root));
+                                     stage.show();
+                                     System.out.println("Loaded");
+                                     //it Hides the current window
+                                     ((Node) (event.getSource())).getScene().getWindow().hide();
+                                 } catch (IOException e) {
+                                 }
+                             }
                             }
-                        } else {
+                        
+                        else {
                             error.setText("Request Error :: " + response.errorBody());
                         }
                     }

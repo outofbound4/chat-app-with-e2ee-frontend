@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<HBox fx:id="friendBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="friendDp" prefHeight="66.0" prefWidth="59.0" style="-fx-background-color: red;" text="Label" textFill="#0b2a2f" />
+      <Pane prefHeight="137.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="friendName" layoutX="-1.0" layoutY="14.0" prefHeight="32.0" prefWidth="200.0" text="Name" />
+            <Label layoutX="6.0" layoutY="55.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
+         </children>
+      </Pane>
+   </children>
+</HBox>
