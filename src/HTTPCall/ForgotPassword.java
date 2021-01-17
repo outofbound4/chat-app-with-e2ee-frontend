@@ -19,6 +19,8 @@ public class ForgotPassword {
     public String response;
     @SerializedName("message")
     public String message;
+    @SerializedName("token")
+    public String token;
 
     public ForgotPassword(String email) {
         this.username = email;
