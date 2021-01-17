@@ -52,15 +52,15 @@ public class ForgotpasswordController implements Initializable {
 
     @FXML
     private void onGetNewPasswordClick(ActionEvent event) {
-        JavaMail mail = new JavaMail();
-        String resetEmail = email.getText();
-        if (isValidEmail(resetEmail)) {
+
+        String username = email.getText();
+        if (isValidEmail(username)) {
             // getting retrofit service object
             RetrofitService retrofit = new RetrofitService();
             // getting retrofit service object RetrofitService retrofit = new RetrofitService();
             HTTPCallAPI service = retrofit.getService();
             // sending URL to server
-            ForgotPassword forgotPass = new ForgotPassword(resetEmail);
+            ForgotPassword forgotPass = new ForgotPassword(username);
             final Call<ForgotPassword> call = service.forgotPassword(forgotPass);
             // making Asynchronous call
             call.enqueue(new Callback<ForgotPassword>() {
@@ -73,8 +73,10 @@ public class ForgotpasswordController implements Initializable {
                             error.setText(apiResponse.message);
                         } else {
                             // here we will do some specific work.
-                            String status = mail.sendMail(resetEmail, "Talkpad reset password",
-                                    "Please click this link : " + apiResponse.token);
+                            JavaMail mail = new JavaMail();
+                            String status = mail.sendMail(username, "Talkpad reset password",
+                                    "Please click this link :  http://localhost:8080/resetPassword?username=" +
+                                            apiResponse.username + "&token=" + apiResponse.token);
                             if (status.equals("Successful")) {
                                 error.setText("Email sent successfully..!!");
                             } else {
