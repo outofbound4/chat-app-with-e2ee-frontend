@@ -5,15 +5,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import HTTPCall.HTTPCallAPI;
-import HTTPCall.RetrofitService;
-import HTTPCall.User;
-import HTTPCall.UserModel;
+import application.ApiService;
+import application.RetrofitService;
+import application.User;
+import application.UserModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +30,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,23 +60,6 @@ public class FrontendController implements Initializable{
 	private TextField searchText;
 	
 	@FXML
-	private Label friendDp1;
-	
-	@FXML
-	private Label friendName1;
-	
-	@FXML
-	private Label friendDp2;
-	
-	@FXML
-	private Label friendName2;
-	
-	@FXML
-	private Label friendDp3;
-	
-	@FXML
-	private Label friendName3;
-	@FXML
 	private Button loadUser;
 	
 	
@@ -90,7 +79,7 @@ public class FrontendController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		RetrofitService retrofit=new RetrofitService();
-		 HTTPCallAPI getuser = retrofit.getService();
+		 ApiService getuser = retrofit.getService();
 		 Call<UserModel>call=getuser.getallusers();
 		 
 		 call.enqueue(new Callback<UserModel>() {
@@ -113,12 +102,33 @@ public class FrontendController implements Initializable{
 					for(User ulist:alluser) {
 						HBox root= new HBox();
 						Label lblUserDp = new Label(ulist.firstname.substring(0, 2));
+						lblUserDp.setAlignment(Pos.CENTER);
+						lblUserDp.setFont(Font.font("Arial", 24));
+						lblUserDp.setStyle("-fx-border-radius:50;padding: 20px;margin:20px;-fx-border-color:black");
+						//lblUserDp.getStyleClass().add("hello-border-radius");
+						lblUserDp.setTextFill(Color.web("#a11313"));
+						lblUserDp.setWrapText(false);
+						lblUserDp.setPrefHeight(45);
+						lblUserDp.setPrefWidth(45);
+						lblUserDp.setMaxHeight(Region.USE_COMPUTED_SIZE);
+						lblUserDp.setMinHeight(Region.USE_COMPUTED_SIZE);
+						lblUserDp.setMaxWidth(Region.USE_COMPUTED_SIZE);
+						lblUserDp.setMinWidth(Region.USE_COMPUTED_SIZE);
+						
 						Label lblUserName=new Label(ulist.firstname +' '+ ulist.lastname);
+						lblUserName.setFont(Font.font("Arial",FontWeight.BOLD, 14));
+						
 						root.getChildren().addAll(lblUserDp, lblUserName);
+						root.setSpacing(20);
+						root.setAlignment(Pos.CENTER_LEFT);
+						//HBox.setMargin(root, new Insets(50, 50, 50, 50));
+						
 						//setGraphic(root);
 						vbox.getChildren().add(root);
+						
+						//friendBox1 fb=new friendBox1();
 					
-						if(i==1) {
+						/*if(i==1) {
 						 System.out.println(friendName1);
 						 friendName1.setText(ulist.firstname +' '+ ulist.lastname);
 						 String s=ulist.firstname.substring(0, 2);
@@ -139,7 +149,7 @@ public class FrontendController implements Initializable{
 							 //System.out.println(s);
 							 friendDp3.setText(s);
 							}
-						i++;
+						i++;*/
 					}
 					 });
 					}
@@ -182,7 +192,7 @@ public class FrontendController implements Initializable{
         	String s=searchText.getText();
         	System.out.println(s);
           	RetrofitService retrofit=new RetrofitService();
-   		 	HTTPCallAPI getuser = retrofit.getService();
+   		 	ApiService getuser = retrofit.getService();
             Call<UserModel> call=getuser.searchuser(s);
             
             call.enqueue(new Callback<UserModel>() {

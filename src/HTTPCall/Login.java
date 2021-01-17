@@ -21,6 +21,9 @@ public class Login {
     public String response;
     @SerializedName("message")
     public String message;
+    
+    @SerializedName("users")
+    public User currentuser;
 
     public Login(String email, String Password) {
         this.username = email;
@@ -29,5 +32,9 @@ public class Login {
 
     public String getEmail() {
         return username;
+    }
+    
+    public User getcurrentuser(){
+        return currentuser;
     }
 }

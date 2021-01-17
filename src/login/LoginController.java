@@ -27,7 +27,8 @@ import javafx.stage.Stage;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+import javafx.application.Platform;
+import HTTPCall.User;
 /**
  * FXML Controller class
  *
@@ -77,6 +78,8 @@ public class LoginController implements Initializable {
                     public void onResponse(Call<Login> call, Response<Login> response) {
                         if (response.isSuccessful()) {
                             Login apiResponse = response.body();
+                            User currentuser=apiResponse.getcurrentuser();
+                        //User currentuser= response.body();
                             //API response
                             if (apiResponse.response.equals("Error")) {
                                 error.setText(apiResponse.message);
@@ -84,10 +87,13 @@ public class LoginController implements Initializable {
 //                        here we will do some specific work.
                             	 error.setText("Login Successful");
                             	 //Parent root1;
+                                 Platform.runLater(()->{
                                  try {
                                      Parent root; 
                                      FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../Front_end/resources/Front_end.fxml"));
                                      root=(Parent)fxmlLoader.load();
+                              //      FrontendController setController=fxmlLoader.getController();
+                                //    setController.myfunction(currentuser);
                                      Stage stage = new Stage();
                                      stage.setTitle("User Dashboard");
                                      stage.setScene(new Scene(root));
@@ -97,9 +103,11 @@ public class LoginController implements Initializable {
                                      ((Node) (event.getSource())).getScene().getWindow().hide();
                                  } catch (IOException e) {
                                  }
-                             }
+                                 
+                                 
+                             });
                             }
-                        
+                        }
                         else {
                             error.setText("Request Error :: " + response.errorBody());
                         }
@@ -112,8 +120,8 @@ public class LoginController implements Initializable {
                     }
                 });
                 // getting Synchronous response
-                // final Response<User> response = call.execute();
-                // System.out.println(response.code());
+                //final Response<User> response = call.execute();
+                  //  System.out.println(response.code());
             } else {
                 error.setText(validationError);
             }
