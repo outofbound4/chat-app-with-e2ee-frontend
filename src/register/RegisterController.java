@@ -87,8 +87,8 @@ public class RegisterController implements Initializable {
                             if (apiResponse.response.equals("Error")) {
                                 error.setText(apiResponse.message);
                             } else {
-//                        here we will do some specific work.
-
+// here we will do some specific work.
+                                error.setText(apiResponse.message);
                             }
                         } else {
                             error.setText("Request Error :: " + response.errorBody());
