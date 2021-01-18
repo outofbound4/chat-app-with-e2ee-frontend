@@ -10,10 +10,12 @@ import HTTPCall.Login;
 import HTTPCall.RetrofitService;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,7 +84,7 @@ public class LoginController implements Initializable {
                                 error.setText(apiResponse.message);
                             } else {
 //                        here we will do some specific work.
-
+                                error.setText(apiResponse.message);
                             }
                         } else {
                             error.setText("Request Error :: " + response.errorBody());
@@ -119,7 +121,7 @@ public class LoginController implements Initializable {
         return "validated";
     }
 
-//    method for email validation
+    //    method for email validation
     public static boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."
                 + "[a-zA-Z0-9_+&*-]+)*@"
