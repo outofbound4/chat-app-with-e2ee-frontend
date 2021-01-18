@@ -85,9 +85,9 @@ public class EditProfileController  implements Initializable{
           String interests=this.interest.getText();
 
 //        empty field checking
-        final String validationError = validate(email);
-        if (isValidEmail(email)) {
-            if (validationError.equals("validated")) {
+        //final String validationError = validate(email);
+        //if (isValidEmail(email)) {
+          //  if (validationError.equals("validated")) {
                 // getting retrofit service object
                 RetrofitService retrofit = new RetrofitService();
                 HTTPCallAPI service = retrofit.getService();
@@ -123,7 +123,5 @@ public class EditProfileController  implements Initializable{
           
  }
         }
-        }
         
-}
 
