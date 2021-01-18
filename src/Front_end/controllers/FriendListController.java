@@ -1,13 +1,13 @@
-package controllers;
+package Front_end.controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.ApiService;
-import application.RetrofitService;
-import application.User;
-import application.UserModel;
+import HTTPCall.HTTPCallAPI;
+import HTTPCall.RetrofitService;
+import HTTPCall.User;
+import HTTPCall.UserModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,7 +82,7 @@ public class FriendListController implements Initializable{
 	public void ongetmoreButtonClick(javafx.event.ActionEvent event) throws IOException, Exception{
 	msg.setText("Button clicked");	
 	 RetrofitService retrofit=new RetrofitService();
-	 ApiService getuser = retrofit.getService();
+	 HTTPCallAPI getuser = retrofit.getService();
 	 Call<UserModel>call=getuser.getallusers();
 	 
 	 call.enqueue(new Callback<UserModel>() {

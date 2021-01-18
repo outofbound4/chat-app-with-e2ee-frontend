@@ -31,10 +31,12 @@ public interface HTTPCallAPI {
     @GET("/get-users")
 	public Call<UserModel> getallusers();
         
-        @POST("/send-message")
-	    Call<Message> sendmessage(@Body Message message);
-	@POST("/get-message")
+    @POST("/send-message")
+	 Call<Message> sendmessage(@Body Message message);
+    @POST("/get-message")
 		Call<Message> getmessage(@Body Message message);
-	@POST("/search-user")
-		Call<UserModel> searchuser(@Body String query);
+    @POST("/search-user")
+	 Call<UserModel> searchuser(@Body String query);
+    @POST("/save-user")
+            Call<User> saveuser(@Body User user);
 }

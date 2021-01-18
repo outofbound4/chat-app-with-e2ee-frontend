@@ -29,11 +29,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import javafx.application.Platform;
 import HTTPCall.User;
+import Front_end.controllers.*;
 /**
  * FXML Controller class
  *
  * @author gaurav
  */
+@SuppressWarnings("unused")
 public class LoginController implements Initializable {
 
     private JFXTextField userid;
@@ -43,6 +45,8 @@ public class LoginController implements Initializable {
     private Text error;
     @FXML
     private JFXTextField email;
+    
+    public static User currentuser ;
 
     /**
      * Initializes the controller class.
@@ -78,7 +82,7 @@ public class LoginController implements Initializable {
                     public void onResponse(Call<Login> call, Response<Login> response) {
                         if (response.isSuccessful()) {
                             Login apiResponse = response.body();
-                            User currentuser=apiResponse.getcurrentuser();
+                           // User currentuser=apiResponse.getcurrentuser();
                         //User currentuser= response.body();
                             //API response
                             if (apiResponse.response.equals("Error")) {
@@ -86,14 +90,26 @@ public class LoginController implements Initializable {
                             } else {
 //                        here we will do some specific work.
                             	 error.setText("Login Successful");
-                            	 //Parent root1;
-                                 Platform.runLater(()->{
+                                 currentuser=apiResponse.getcurrentuser();
+                            	 Preferences userPreferences = Preferences.userRoot().node("src");
+                            	 //Store an int to User Preferences with String key
+                                     userPreferences.put("FIRSTNAME",currentuser.getFirstname());
+                                     userPreferences.put("LASTNAME",currentuser.getLastname());
+                                     userPreferences.put("INTERESTS",currentuser.getInterests());
+                                     
+                                    //Retrieve an entry from User Preferences, 
+                                    //the number sent as a second parameter will be returned if the key doesn't exist
+                                    //int numberOfRows = userPreferences.getInt("NUMBER_OF_ROWS", 10);
+                            	   //currentuser=apiResponse.getcurrentuser();
+                                   System.out.println(userPreferences.get("FIRSTNAME", ""));
+                                   System.out.println(userPreferences.get("LASTSTNAME", ""));
+                                   System.out.println(userPreferences.get("INTERESTS", ""));
+                            	  
+ //                                Platform.runLater(()->{
                                  try {
                                      Parent root; 
                                      FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../Front_end/resources/Front_end.fxml"));
                                      root=(Parent)fxmlLoader.load();
-                              //      FrontendController setController=fxmlLoader.getController();
-                                //    setController.myfunction(currentuser);
                                      Stage stage = new Stage();
                                      stage.setTitle("User Dashboard");
                                      stage.setScene(new Scene(root));
@@ -105,9 +121,11 @@ public class LoginController implements Initializable {
                                  }
                                  
                                  
-                             });
+   //                          });
                             }
                         }
+                            
+                 
                         else {
                             error.setText("Request Error :: " + response.errorBody());
                         }

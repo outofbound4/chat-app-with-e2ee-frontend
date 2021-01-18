@@ -1,4 +1,4 @@
-package Front_end.application;
+package application;
 
 import com.google.gson.annotations.SerializedName;
 
