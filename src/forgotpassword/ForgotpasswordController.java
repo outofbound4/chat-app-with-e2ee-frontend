@@ -8,7 +8,6 @@ package forgotpassword;
 import HTTPCall.ForgotPassword;
 import HTTPCall.HTTPCallAPI;
 import HTTPCall.RetrofitService;
-import JavaMail.JavaMail;
 import com.jfoenix.controls.JFXTextField;
 
 import java.io.IOException;
@@ -72,16 +71,7 @@ public class ForgotpasswordController implements Initializable {
                         if (apiResponse.response.equals("Error")) {
                             error.setText(apiResponse.message);
                         } else {
-                            // here we will do some specific work.
-                            JavaMail mail = new JavaMail();
-                            String status = mail.sendMail(username, "Talkpad reset password",
-                                    "Please click this link :  http://localhost:8080/resetPassword?username=" +
-                                            apiResponse.username + "&token=" + apiResponse.token);
-                            if (status.equals("Successful")) {
-                                error.setText("Email sent successfully..!!");
-                            } else {
-                                error.setText(status);
-                            }
+                            error.setText(apiResponse.message);
                         }
                     } else {
                         error.setText("Request Error :: " + response.errorBody());
